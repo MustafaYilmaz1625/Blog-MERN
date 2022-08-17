@@ -1,6 +1,6 @@
 import { Avatar } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./post.css";
 
 const Post = () => {
@@ -20,12 +20,32 @@ const Post = () => {
         </div>
         <div className="post-header-right">
           <button>
-            <MoreHorizIcon />
+            <MoreHorizIcon className="post-like-icon active" />
           </button>
         </div>
       </div>
-      <div className="post-image"></div>
-      <div className="post-bottom"></div>
+      <div className="post-image">
+        <img src="/images/post/1.png" alt="Post Img" />
+      </div>
+      <div className="post-bottom">
+        <div className="post-like">
+          <button>
+            <FavoriteIcon className="post-like-icon active" />
+          </button>
+        </div>
+        <span className="post-like-count">0 like</span>
+        <div className="post-content">
+          <a href="/" classNama="profile-username">
+            eminbasbayan
+          </a>
+        </div>
+        <span className="post-text">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
+          ducimus explicabo, eos itaque nobis esse omnis minus reprehenderit rem
+          consequatur!
+        </span>
+        <div className="post-time">1 dk önce</div>
+      </div>
     </div>
   );
 };

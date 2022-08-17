@@ -23,3 +23,23 @@
 .post-header-right button {
   background: #fafafa;
 }
+
+.post-header .post-image {
+  display: flex;
+}
+
+.post-image img {
+  object-fit: cover;
+}
+
+.post-bottom {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-like-count {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 6px 0;
+}
