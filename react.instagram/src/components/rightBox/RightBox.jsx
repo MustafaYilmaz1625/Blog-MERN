@@ -10,10 +10,10 @@ const RightBox = () => {
         <a href="/">
           <Avatar src="/images/person/0.png" sx={{ width: 56, height: 56 }} />
         </a>
-        <a href="/" className="account-titles">
+        <div className="account-titles">
           <a href="/">eminbasbayan</a>
           <span>Emin Başbayan</span>
-        </a>
+        </div>
       </div>
       <span className="friends-title">My Friends</span>
       <ul className="friends-list">
