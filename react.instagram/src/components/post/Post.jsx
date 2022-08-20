@@ -35,15 +35,17 @@ const Post = () => {
         </div>
         <span className="post-like-count">0 like</span>
         <div className="post-content">
-          <a href="/" classNama="profile-username">
+          <a href="/" className="profile-username">
             eminbasbayan
           </a>
+          {"         "}
+          <span className="post-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
+            ducimus explicabo, eos itaque nobis esse omnis minus reprehenderit
+            rem consequatur!
+          </span>
         </div>
-        <span className="post-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
-          ducimus explicabo, eos itaque nobis esse omnis minus reprehenderit rem
-          consequatur!
-        </span>
+
         <div className="post-time">1 dk önce</div>
       </div>
     </div>
