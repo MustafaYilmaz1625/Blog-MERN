@@ -63,3 +63,9 @@
 .friend-itemiright {
   margin-left: 6px;
 }
+
+@media (max-width: 1000px) {
+  .friend-item-rigth {
+    margin-left: 2px;
+  }
+}
