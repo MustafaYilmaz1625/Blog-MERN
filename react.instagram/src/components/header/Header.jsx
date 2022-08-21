@@ -8,7 +8,7 @@ import { Avatar } from "@mui/material";
 
 import "./header.css";
 
-const Header = () => {
+const Header = ({ handleOpen }) => {
   return (
     <div className="header-wrapper">
       <div className="container">
@@ -25,9 +25,9 @@ const Header = () => {
             <a href="/">
               <ChatOutlinedIcon className="icon" />
             </a>
-            <a href="/">
-              <AddBoxOutlinedIcon className="icon" />
-            </a>
+
+            <AddBoxOutlinedIcon className="icon" onClick={handleOpen} />
+
             <a href="/">
               <Avatar
                 alt="Remy Sharp"
