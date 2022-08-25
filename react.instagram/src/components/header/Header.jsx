@@ -26,7 +26,11 @@ const Header = ({ handleOpen }) => {
               <ChatOutlinedIcon className="icon" />
             </a>
 
-            <AddBoxOutlinedIcon className="icon" onClick={handleOpen} />
+            <AddBoxOutlinedIcon
+              className="icon"
+              style={{ cursor: "pointer" }}
+              onClick={handleOpen}
+            />
 
             <a href="/">
               <Avatar

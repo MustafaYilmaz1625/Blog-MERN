@@ -1,0 +1,18 @@
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  width: 500px;
+  height: auto;
+  z-index: 999;
+  outline: none;
+  border-radius: 10px;
+}
+
+.modal-head {
+  text-align: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+}
