@@ -6,10 +6,10 @@ import VideoLibraryOutlinedIcon from "@mui/icons-material/VideoLibraryOutlined";
 import BookmarkAddOutlinedIcon from "@mui/icons-material/BookmarkAddOutlined";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Post } from "../../components/post/Post";
+import  Post  from "../../components/post/Post";
 import "./profile.css";
-
-export const Profile = () => {
+ 
+const Profile = () => {
     return (
         <div className="container">
             <div className="profile-page">
@@ -88,3 +88,5 @@ export const Profile = () => {
         </div>
     );
 };
+
+export default Profile
