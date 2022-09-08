@@ -25,3 +25,9 @@
   font-weight: 500;
   display: flex;
 }
+
+@media (max-width: 768px) {
+  .chat-online-name{
+    display: none;
+  }
+}

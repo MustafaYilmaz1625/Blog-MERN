@@ -43,3 +43,11 @@
   display: flex;
   font-size: 28px;
 }
+
+
+
+@media (max-width: 768px) {
+  .header .search {
+    display: none;
+  }
+}

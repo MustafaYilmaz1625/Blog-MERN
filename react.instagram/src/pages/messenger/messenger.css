@@ -78,3 +78,24 @@ background: #ffff;
 .chat-online{
   flex: 3;
 }
+
+@media (max-width: 768px) {
+  .chat-menu {
+    flex: 1;
+  }
+  .chat-box-bottom {
+    flex-direction: column;
+  }
+  .chat-box-bottom button {
+    width: 100%;
+  }
+  .chat-menu-input {
+    display: none;
+  }
+  .chat-box{
+    flex: 10;
+  }
+  .chat-online{
+    flex:1;
+  }
+}
