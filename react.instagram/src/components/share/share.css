@@ -60,3 +60,16 @@
   right: 15px;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .modal-box {
+    width: 100%;
+  }
+
+  .modal-box .modal-buttons {
+    justify-content: center;
+  }
+  .modal-box .modal-buttons button:not(:first-child) {
+    display: none;
+  }
+}
