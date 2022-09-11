@@ -44,7 +44,7 @@ const Post = ({ top, bottom }) => {
             </a>
 
             <span className="post-text">
-              Post açıklaması
+              {" "}Lorem ipsum dolor sit amet, consectetur adipiscing.Lorem ipsum dolor sit amet, consectetur adipiscing.
             </span>
           </div>
 
