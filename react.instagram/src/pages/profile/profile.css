@@ -131,3 +131,36 @@
   color: #fff;
 }
 
+
+@media (max-width: 576px) {
+  .profile-page .profile-head {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+  }
+
+  .profile-page .profile-head .profile-page-username {
+    font-size: 20px;
+  }
+
+  .head-right-center {
+    justify-content: center;
+  }
+
+  .head-right-bottom {
+    text-align: center;
+  }
+
+  .profile-nav-tabs {
+    justify-content: center !important;
+    column-gap: 10px;
+  }
+
+  .profile-nav-tabs button:not(:first-child) {
+    display: none;
+  }
+
+  .profile-body .profile-post-grid {
+    grid-template-columns: auto;
+  }
+}
