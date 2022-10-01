@@ -8,6 +8,9 @@ import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom";
 
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -15,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <Share open={open} handleClose={handleClose} />
+      <ToastContainer/>
       <Router>
         {<Header handleOpen={handleOpen} />}
         <Routes>

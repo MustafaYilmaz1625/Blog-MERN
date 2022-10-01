@@ -3,6 +3,7 @@ import { Button, TextField } from "@mui/material"
 import axios from "axios";
 import "./register.css"
 import { Link } from "react-router-dom"
+import { toast } from "react-toastify";
 
 const Register = () => {
       const [fullName,setFullName]=useState("")
@@ -37,6 +38,14 @@ const Register = () => {
                         } catch (err) {
                               console.log(err);
                         }
+                  }
+                  try {
+                        const res=await axios.post("/auth/register");
+                        if(res.status ===200){
+                              toast.success('Registration successfully!')
+                        }
+                  } catch (err) {
+                        console.log(err);
                   }
                   
             }
