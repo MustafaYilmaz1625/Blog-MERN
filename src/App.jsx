@@ -25,11 +25,14 @@ function App() {
       <Router>
         {user &&  <Header handleOpen={handleOpen} />}
         <Routes>
-          <Route path="/" element={user ? <Home /> : <Login />}/>
-          <Route path="/profile/:username" element={user ? <Profile /> : <Login />}/>
-          <Route path="/messenger" element={user ? <Messenger /> : <Login />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/register" element={<Register />}/>
+          <Route path="/" element={user ? <Home /> : <Login />} />
+          <Route
+            path="/profile/:username"
+            element={user ? <Profile /> : <Login />}
+          />
+          <Route path="/messenger" element={user ? <Messenger /> : <Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
     </div>
