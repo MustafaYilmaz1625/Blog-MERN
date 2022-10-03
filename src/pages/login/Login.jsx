@@ -44,6 +44,9 @@ export const Login = () => {
           Go to Register
         </Link>
         <Button type="submit" variant="contained" color="success">
+          {isFetching ? "Loading..." : "Login"}
+        </Button>
+        {/* <Button type="submit" variant="contained" color="success">
           {isFetching ? (
             <CircularProgress
               style={{ width: "25px", height: "25px" }}
@@ -52,7 +55,7 @@ export const Login = () => {
           ) : (
             "Login"
           )}
-        </Button>
+        </Button> */}
       </form>
     </div>
   );
