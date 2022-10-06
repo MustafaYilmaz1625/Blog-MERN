@@ -16,7 +16,7 @@ export const Header = ({ handleOpen }) => {
   const [search, setSearch] = useState("");
   const [userFilter, setUserFilter] = useState("");
   const { user } = useContext(AuthContext);
-
+console.log(user.profilePicture)
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
