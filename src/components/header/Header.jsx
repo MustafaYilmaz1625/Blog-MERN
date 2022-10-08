@@ -6,7 +6,7 @@ import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import { Avatar, Box } from "@mui/material";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import { Link } from "react-router-dom";
-import  Logo  from "../logo/Logo";
+import { Logo } from "../logo/Logo";
 import axios from "axios";
 import "./header.css";
 import { AuthContext } from "../../context/AuthContext";
@@ -16,7 +16,7 @@ export const Header = ({ handleOpen }) => {
   const [search, setSearch] = useState("");
   const [userFilter, setUserFilter] = useState("");
   const { user } = useContext(AuthContext);
-console.log(user.profilePicture)
+
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
