@@ -7,17 +7,17 @@ import "./home.css";
 import { useContext } from "react";
 
 const Home = () => {
-  // const [timelinePosts, setTimelinePosts] = useState([]);
-  // const { user } = useContext(AuthContext)
+  const [timelinePosts, setTimelinePosts] = useState([]);
+  const { user } = useContext(AuthContext)
 
-  // useEffect(() => {
-  //   const getPosts=async()=> {
-  //     const res = await axios.get("/posts/timeline/" + user._id)
-  //     setTimelinePosts(res.data)
-  //   }
-  //   getPosts();
-  // }, [user._id])
-  // console.log(timelinePosts)
+  useEffect(() => {
+    const getPosts=async()=> {
+      const res = await axios.get("/posts/timeline/" + user._id)
+      setTimelinePosts(res.data)
+    }
+    getPosts();
+  }, [user._id])
+  console.log(timelinePosts)
   
   return (
     <div>
@@ -27,7 +27,7 @@ const Home = () => {
             <div className="posts">
               {/* {timelinePosts.map((post)=>( */}
                 <Post top bottom />
-              {/* // ))}  */}
+                {/* ))}   */}
             </div>
           </div>
           <div className="home-page-right">
