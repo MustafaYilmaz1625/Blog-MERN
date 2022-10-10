@@ -7,17 +7,19 @@ import "./home.css";
 import { useContext } from "react";
 
 const Home = () => {
-  const [timelinePosts, setTimelinePosts] = useState([]);
+  // const [timelinePosts, setTimelinePosts] = useState([]);
   const { user } = useContext(AuthContext)
+  console.log({user})
 
-  useEffect(() => {
-    const getPosts=async()=> {
-      const res = await axios.get("/posts/timeline/" + user._id)
-      setTimelinePosts(res.data)
-    }
-    getPosts();
-  }, [user._id])
-  console.log(timelinePosts)
+  // useEffect(() => {
+  //   const getPosts=async()=> {
+  //     const res = await axios.get("/posts/timeline/" + user._id)
+  //     setTimelinePosts(res.data)
+  //     console.log(res.data)
+  //   }
+  //   getPosts();
+  // }, [user._id])
+
   
   return (
     <div>
