@@ -1,19 +1,23 @@
-import { useEffect, useState, useContext } from "react";
-import { Avatar } from "@mui/material";
+import { useContext, useEffect, useState } from "react";
+import { Avatar, IconButton, Menu, MenuItem } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
-import TimeAgo from 'react-timeago'
-import turkishStrings from 'react-timeago/lib/language-strings/tr'
-import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
+import TimeAgo from "react-timeago";
+import turkishStrings from "react-timeago/lib/language-strings/tr";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios"
+import { toast } from "react-toastify";
+import axios from "axios";
 import "./post.css";
 
 const Post = ({ top, bottom, post }) => {
-  const[user,setUser]= useState([]);
+  const [user, setUser] = useState([]);
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
   const formatter = buildFormatter(turkishStrings)
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -45,6 +49,35 @@ const Post = ({ top, bottom, post }) => {
   };
 
 
+  const deleteHandler = async () => {
+    try {
+      if (window.confirm("Are you sure?")) {
+        const res = await axios.delete("/posts/" + post._id, {
+          data: {
+            userId: currentUser._id,
+          },
+        });
+        if (res.status === 200) {
+          toast.success(res.data);
+          window.location.reload();
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
+
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+
   return (
     <div className="post-wrapper">
       {top && (
@@ -61,9 +94,16 @@ const Post = ({ top, bottom, post }) => {
             </Link>
           </div>
           <div className="post-header-right">
-            <button>
+            <button onClick={handleClick}>
               <MoreHorizIcon className="post-like-icon active" />
             </button>
+            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+              <MenuItem onClick={handleClose}>
+                <IconButton color="error" onClick={deleteHandler}>
+                  <DeleteIcon fontSize="inherit" />
+                </IconButton>
+              </MenuItem>
+            </Menu>
           </div>
         </div>
       )}
