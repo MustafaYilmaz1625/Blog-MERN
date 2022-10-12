@@ -1,9 +1,22 @@
+import { useEffect, useState } from "react";
 import { Avatar } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import axios from "axios"
 import "./post.css";
 
-const Post = ({ top, bottom }) => {
+const Post = ({ top, bottom, post }) => {
+  const[user,setUser]= useState([])
+
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await axios.get("/users?userId=" + post.userId);
+      setUser(res.data)
+    }
+    getUser();
+  }, [post.userId])
+  console.log(user);
+
   return (
     <div className="post-wrapper">
       {top && (
