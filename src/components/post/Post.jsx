@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Avatar } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -6,14 +6,19 @@ import { Link } from "react-router-dom";
 import TimeAgo from 'react-timeago'
 import turkishStrings from 'react-timeago/lib/language-strings/tr'
 import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
+import { AuthContext } from "../../context/AuthContext";
 import axios from "axios"
 import "./post.css";
 
 const Post = ({ top, bottom, post }) => {
-  const[user,setUser]= useState([])
+  const[user,setUser]= useState([]);
+  const [like, setLike] = useState(post.likes.length);
+  const [isLiked, setIsLiked] = useState(false);
 
   const formatter = buildFormatter(turkishStrings)
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const { user: currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     const getUser = async () => {
@@ -22,6 +27,22 @@ const Post = ({ top, bottom, post }) => {
     }
     getUser();
   }, [post.userId])
+
+  useEffect(() => {
+    setIsLiked(post.likes.includes(currentUser._id));
+  }, [currentUser._id, post.likes]);
+
+  const likeHandler = async () => {
+    try {
+      await axios.put("/posts/" + post._id + "/like", {
+        userId: currentUser._id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
 
 
   return (
@@ -53,11 +74,11 @@ const Post = ({ top, bottom, post }) => {
       {bottom && (
         <div className="post-bottom">
           <div className="post-like">
-            <button>
-              <FavoriteIcon className="post-like-icon active" />
+            <button onClick={likeHandler}>
+              <FavoriteIcon className={`post-like-icon ${isLiked && "active"}`} />
             </button>
           </div>
-          <span className="post-like-count">{post.likes.length} {post.likes.length >1 ? "likes" : "like"} </span>
+          <span className="post-like-count">{like} {like >1 ? "likes" : "like"} </span>
           <div className="post-content">
             <Link to={"/profile/" + user.username} className="profile-username">
               {user.username}
