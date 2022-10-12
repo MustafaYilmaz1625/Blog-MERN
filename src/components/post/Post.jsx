@@ -2,11 +2,18 @@ import { useEffect, useState } from "react";
 import { Avatar } from "@mui/material";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Link } from "react-router-dom";
+import TimeAgo from 'react-timeago'
+import turkishStrings from 'react-timeago/lib/language-strings/tr'
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
 import axios from "axios"
 import "./post.css";
 
 const Post = ({ top, bottom, post }) => {
   const[user,setUser]= useState([])
+
+  const formatter = buildFormatter(turkishStrings)
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
     const getUser = async () => {
@@ -15,22 +22,22 @@ const Post = ({ top, bottom, post }) => {
     }
     getUser();
   }, [post.userId])
-  console.log(user);
+
 
   return (
     <div className="post-wrapper">
       {top && (
         <div className="post-header">
           <div className="post-header-left">
-            <a href="/">
+            <Link to={"/profile/" + user.username}>
               <Avatar
-                src="https://res.cloudinary.com/techprivil/image/upload/v1655937337/instagram-clone/bhd2k9blnfvdrpismvy0.jpg"
+                src={user.profilePicture && PF + user.profilePicture}
                 sx={{ width: 32, height: 32 }}
               />
-            </a>
-            <a href="/" className="profile-username">
-              eminbasbayan
-            </a>
+            </Link>
+            <Link to={"/profile/" + user.username} className="profile-username">
+             {user.username}
+            </Link>
           </div>
           <div className="post-header-right">
             <button>
@@ -50,18 +57,20 @@ const Post = ({ top, bottom, post }) => {
               <FavoriteIcon className="post-like-icon active" />
             </button>
           </div>
-          <span className="post-like-count">0 like</span>
+          <span className="post-like-count">{post.likes.length} {post.likes.length >1 ? "likes" : "like"} </span>
           <div className="post-content">
-            <a href="/" className="profile-username">
-              eminbasbayan
-            </a>
+            <Link to={"/profile/" + user.username} className="profile-username">
+              {user.username}
+            </Link>
 
             <span className="post-text">
-              {" "}Lorem ipsum dolor sit amet, consectetur adipiscing.Lorem ipsum dolor sit amet, consectetur adipiscing.
+              {" "}{post.desc}
             </span>
           </div>
 
-          <div className="post-time">1 dk önce</div>
+          <div className="post-time">
+            <TimeAgo date={post.createdAt} formatter={formatter} />
+          </div>
         </div>
       )}
     </div>
