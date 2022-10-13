@@ -108,7 +108,7 @@ const Post = ({ top, bottom, post }) => {
         </div>
       )}
       <div className="post-image">
-        <img src="/images/post/1.png" alt="Post Img" />
+        <img src={post && PF + post.img} alt="Post Img" />
       </div>
 
       {bottom && (
