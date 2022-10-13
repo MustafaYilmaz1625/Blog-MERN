@@ -1,3 +1,4 @@
+import { useContext, useEffect, useState } from "react";
 import { Avatar, Button } from "@mui/material";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
@@ -7,9 +8,39 @@ import BookmarkAddOutlinedIcon from "@mui/icons-material/BookmarkAddOutlined";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import  Post  from "../../components/post/Post";
+import { AuthContext } from "../../context/AuthContext";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./profile.css";
  
 const Profile = () => {
+    const [user, setUser] = useState([]);
+    const [posts, setPosts] = useState([]);
+    const [followed, setFollowed] = useState();
+    const { user: currentUser, dispatch } = useContext(AuthContext);
+    const username = useParams().username;
+
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const getUser = async () => {
+            const res = await axios.get("/users?username=" + username);
+            setUser(res.data);
+        };
+        getUser();
+        setFollowed(currentUser.followings.includes(user?._id));
+    }, [username, currentUser.followings, user?._id]);
+
+    useEffect(() => {
+        const getPosts = async () => {
+            const res = await axios.get("/posts/profile/" + username);
+            setPosts(res.data);
+        };
+        getPosts();
+    }, [username]);
+
     return (
         <div className="container">
             <div className="profile-page">
@@ -75,13 +106,15 @@ const Profile = () => {
                         </button>
                     </div>
                     <div className="profile-post-grid">
-                        <div className="grid-post">
-                            <Post />
+                     {posts.map((post) => (
+                         <div className="grid-post" key={post._id}>
+                                <Post  post={post}/>
                             <div className="like-icon-wrapper">
                                 <FavoriteIcon className="like-icon" />
                                 <b>1</b>
                             </div>
                         </div>
+                    ))}
                     </div>
                 </div>
             </div>
