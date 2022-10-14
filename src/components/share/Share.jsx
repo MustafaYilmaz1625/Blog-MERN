@@ -1,4 +1,4 @@
-import { useState, useContext,useRef } from "react";
+import { useContext, useState, useRef } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -14,8 +14,8 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import "./share.css";
 
-const Share = ({ open, handleClose }) => {
-  const[file,setFile]=useState(null)
+export const Share = ({ open, handleClose }) => {
+  const [file, setFile] = useState(null);
   const { user } = useContext(AuthContext);
   const desc = useRef();
 
@@ -62,7 +62,7 @@ const Share = ({ open, handleClose }) => {
             <div className="modal-body-top">
               <Avatar
                 alt="Remy Sharp"
-                src={"/images/person/0.png"}
+                src={user && PF + user.profilePicture}
                 sx={{ width: 46, height: 46 }}
               />
               <input
@@ -82,7 +82,12 @@ const Share = ({ open, handleClose }) => {
                   <b>Fotoğraf</b>
                 </button>
               </label>
-              <input type="file" onChange={(e)=> setFile(e.target.files[0])} id="inputFile" style={{ display: "none" }} />
+              <input
+                type="file"
+                onChange={(e) => setFile(e.target.files[0])}
+                id="inputFile"
+                style={{ display: "none" }}
+              />
               <button>
                 <VideoLibraryOutlinedIcon />
                 <b>Video</b>
@@ -98,8 +103,16 @@ const Share = ({ open, handleClose }) => {
             </div>
             {file && (
               <div className="share-img-wrapper">
-                <img className="share-img" alt="" src={URL.createObjectURL(file)}/>
-                <CancelOutlinedIcon onClick={()=>setFile(null)} className="cancel-icon" color="error" />
+                <img
+                  className="share-img"
+                  src={URL.createObjectURL(file)}
+                  alt=""
+                />
+                <CancelOutlinedIcon
+                  onClick={() => setFile(null)}
+                  className="cancel-icon"
+                  color="error"
+                />
               </div>
             )}
           </form>

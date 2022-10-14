@@ -127,4 +127,5 @@ export const Header = ({ handleOpen }) => {
     </div>
   );
 };
+
 export default Header;
