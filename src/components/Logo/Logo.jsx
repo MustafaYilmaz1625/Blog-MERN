@@ -1,15 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Logo = () => {
+export const Logo = () => {
   return (
-    <a href="/" style={{ display: "flex" }}>
+    <Link to="/" style={{ display: "flex" }}>
       <img
-        style={{ height: "28px", width: "103px" }}
-        src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"
+        src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png"
         alt="logo"
       />
-    </a>
+    </Link>
   );
 };
-
 export default Logo;
