@@ -23,11 +23,12 @@
 .chat-online-name {
   margin-left: 10px;
   font-weight: 500;
-  display: flex;
 }
 
+/* responsive */
+
 @media (max-width: 768px) {
-  .chat-online-name{
+  .chat-online-name {
     display: none;
   }
 }
