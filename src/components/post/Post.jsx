@@ -12,25 +12,25 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import "./post.css";
 
-const Post = ({ top, bottom, post }) => {
+export const Post = ({ top, bottom, post }) => {
   const [user, setUser] = useState([]);
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  const formatter = buildFormatter(turkishStrings)
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
   const { user: currentUser } = useContext(AuthContext);
+
+  const formatter = buildFormatter(turkishStrings);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
     const getUser = async () => {
       const res = await axios.get("/users?userId=" + post.userId);
-      setUser(res.data)
-    }
+      setUser(res.data);
+    };
     getUser();
-  }, [post.userId])
+  }, [post.userId]);
 
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
@@ -47,7 +47,6 @@ const Post = ({ top, bottom, post }) => {
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
-
 
   const deleteHandler = async () => {
     try {
@@ -69,14 +68,12 @@ const Post = ({ top, bottom, post }) => {
     setIsLiked(!isLiked);
   };
 
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-
 
   return (
     <div className="post-wrapper">
@@ -90,12 +87,12 @@ const Post = ({ top, bottom, post }) => {
               />
             </Link>
             <Link to={"/profile/" + user.username} className="profile-username">
-             {user.username}
+              {user.username}
             </Link>
           </div>
           <div className="post-header-right">
             <button onClick={handleClick}>
-              <MoreHorizIcon className="post-like-icon active" />
+              <MoreHorizIcon />
             </button>
             <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
               <MenuItem onClick={handleClose}>
@@ -110,25 +107,24 @@ const Post = ({ top, bottom, post }) => {
       <div className="post-image">
         <img src={post && PF + post.img} alt="Post Img" />
       </div>
-
       {bottom && (
         <div className="post-bottom">
           <div className="post-like">
             <button onClick={likeHandler}>
-              <FavoriteIcon className={`post-like-icon ${isLiked && "active"}`} />
+              <FavoriteIcon
+                className={`post-like-icon ${isLiked && "active"}`}
+              />
             </button>
           </div>
-          <span className="post-like-count">{like} {like >1 ? "likes" : "like"} </span>
+          <span className="post-like-count">
+            {like} {like > 1 ? "likes" : "like"}
+          </span>
           <div className="post-content">
             <Link to={"/profile/" + user.username} className="profile-username">
               {user.username}
-            </Link>
-
-            <span className="post-text">
-              {" "}{post.desc}
-            </span>
+            </Link>{" "}
+            <span className="post-text">{post.desc}</span>
           </div>
-
           <div className="post-time">
             <TimeAgo date={post.createdAt} formatter={formatter} />
           </div>
@@ -137,5 +133,4 @@ const Post = ({ top, bottom, post }) => {
     </div>
   );
 };
-
 export default Post;

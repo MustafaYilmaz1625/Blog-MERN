@@ -19,6 +19,7 @@
   font-size: 14px;
   align-items: center;
 }
+
 .account-titles span {
   font-size: 14px;
   color: #ccc;
@@ -31,10 +32,11 @@
   font-weight: bold;
   color: #ccc;
 }
+
 .friends-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  row-gap: 12px;
 }
 
 .friend-item {
@@ -47,25 +49,29 @@
   display: flex;
   align-items: center;
 }
+
 .friend-username {
   display: flex;
   flex-direction: column;
+  margin-left: 8px;
 }
 
 .friend-username a {
   font-size: 14px;
   font-weight: 600;
 }
+
 .friend-username span {
   font-size: 12px;
   color: #ccc;
 }
-.friend-itemiright {
-  margin-left: 6px;
+
+.friend-item-right {
+  margin-left: 6pc;
 }
 
 @media (max-width: 1000px) {
-  .friend-item-rigth {
-    margin-left: 2px;
+  .friend-item-right {
+    margin-left: 2pc;
   }
 }

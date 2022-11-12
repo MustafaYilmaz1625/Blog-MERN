@@ -14,11 +14,11 @@
   align-items: center;
 }
 
-.post-header.profile-username {
-  font: bold;
-}
-.profile-username {
+.post-header .profile-username {
   margin-left: 10px;
+}
+
+.profile-username {
   font-weight: 600;
   font-size: 14px;
 }
@@ -27,7 +27,7 @@
   background: #fafafa;
 }
 
-.post-header .post-image {
+.post-image {
   display: flex;
 }
 
@@ -56,12 +56,11 @@
 }
 
 .post-content .post-text {
-  line-height: 1;
   font-size: 14px;
 }
 
 .post-time {
   font-size: 12px;
-  color: #cccc;
+  color: #ccc;
   margin-top: 8px;
 }

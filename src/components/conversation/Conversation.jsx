@@ -1,4 +1,3 @@
-
 import { Avatar } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -33,4 +32,4 @@ export const Conversation = ({ conversation, currentUser }) => {
     </div>
   );
 };
-export default Conversation
+export default Conversation;

@@ -121,5 +121,4 @@ export const Share = ({ open, handleClose }) => {
     </>
   );
 };
-
 export default Share;
