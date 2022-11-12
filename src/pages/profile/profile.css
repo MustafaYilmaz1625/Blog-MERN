@@ -131,6 +131,7 @@
   color: #fff;
 }
 
+/* responsive */
 
 @media (max-width: 576px) {
   .profile-page .profile-head {

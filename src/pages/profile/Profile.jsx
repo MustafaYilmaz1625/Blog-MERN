@@ -8,7 +8,7 @@ import BookmarkAddOutlinedIcon from "@mui/icons-material/BookmarkAddOutlined";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import  Post  from "../../components/post/Post";
+import { Post } from "../../components/post/Post";
 import { AuthContext } from "../../context/AuthContext";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
