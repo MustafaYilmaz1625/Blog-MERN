@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isFetching, dispatch } = useContext(AuthContext); 
+  const { isFetching, dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -43,9 +43,6 @@ export const Login = () => {
         <Link to="/register" className="auth-link" href="/">
           Go to Register
         </Link>
-        {/* <Button type="submit" variant="contained" color="success">
-          {isFetching ? "Loading..." : "Login"}
-        </Button> */}
         <Button type="submit" variant="contained" color="success">
           {isFetching ? (
             <CircularProgress
@@ -60,5 +57,4 @@ export const Login = () => {
     </div>
   );
 };
-
-export default Login
+export default Login;

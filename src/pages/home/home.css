@@ -6,9 +6,6 @@
 .home-page .home-page-left {
   flex: 3;
 }
-.home-page .home-page-right {
-  flex: 2;
-}
 
 .home-page .home-page-left .posts {
   display: flex;
@@ -16,6 +13,11 @@
   row-gap: 20px;
 }
 
+.home-page .home-page-right {
+  flex: 2;
+}
+
+/* responsive */
 
 @media (max-width: 768px) {
   .home-page-right {
