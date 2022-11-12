@@ -9,7 +9,7 @@ import Profile  from "./pages/profile/Profile";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import  AuthContext  from "./context/AuthContext";
+import  {AuthContext}  from "./context/AuthContext";
 
 function App() {
   const [open, setOpen] = useState(false);
